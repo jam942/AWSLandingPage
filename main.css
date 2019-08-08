@@ -1,0 +1,21 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    background: #3c3c3c;
+    max-width: 1500px;
+    margin: auto;
+}
+
+.header {
+    padding: 0px;
+    text-align: center;
+    background: #3c3c3c;
+    font-size: 15px;
+}
+
+.body {
+    padding: 25px 100px;
+    background: white;
+    margin: 25px 150px;
+    line-height: 1.5;
+}
