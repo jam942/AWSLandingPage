@@ -1,53 +1,54 @@
-// Create variable called test cases to store the results somewhere??
-var testCase;
-
-// Create a request and assign a new XMLHttpRequest object to it
-var request = new XMLHttpRequest()
-// Open a new connection, put the FIT Tool url
-request.open("GET", "UI HTML", true);
+//var request = new XMLHttpRequest()
+/* Open a new connection, put the FIT Tool url
+request.open("GET", "10.108.151.11", true);
 request.responseType = 'json';
+*/
 
-request.loadResponse (){
-	if (this.readyState == 4 && this.status == 200) {
-		testCase = request.response;
-		initialise();
-	} else {
-		//if this fails
-		console.log('Cannot get test cases' + request.status + ': ' + request.statusText)
+//Check the status of the server to see if it is online
+function checkServerStatus() {
+	var checkRequest = new XMLHttpRequest(); // establish a new connection
+	var file = ""; //FIT Tool. Check to see if this is the correct URL
+	var ran = Math.round(Math.random() * 10000); //bleh
+	checkRequest.open('HEAD', file + "" + r, false);
+		//Try and catch exceptions
+	try {
+	checkRequest.send(); //once the connection is established, send the request
+		if(this.readyState == 4 && this.status == 200) {
+			return true;
+		} else {
+			return false; //lol fail :(
+		}
+	} catch (e) {
+		return false;
 	}
 };
 
-// Send request
-request.send()
-
-//--------------
-
-/*
-//init
-function createNode (element){
-	return document.createElement(element);
-}
-
-function append(parent, el){
-	return parent.appendChild(el);
-}
-//Trying to call the relevant test case
-const ul = document.getElementById("testcases");
-
-//PUT THE FIT URL in here
-const url = 'http fit tool';
-
-//Make the URL CALL
-fetch(url)
-.then((resp) => resp.JSON())
-.then(function(data){
-	let testcase = data.results;
-
-	return testcase.map(function(testcases){
-		let li = createNode();
-	})
-})
-*/
+//Submit a10.108.151.11 response to the FIT Tool
+function submitRequestToFITtool(){
+	var submitRequestToFITtool = new XMLHttpRequest();
+	var fitIP = {
+		"STG" : "10.108.188.128:3105",
+   		"PROD" : "10.108.189.128:3105",
+		"DEMO" : "10.108.189.128:3105"
+	}
+	//select the environment
+	var selectEnvironment = $("#environment").find(":selected").text();
+	alert(fitIP[selectEnvironment]);
+	var isselect = $("#inputscript").find(":selected").text();
+			alert (isselect);
+	var testCase = $("#test_Case_No").find(":selected").text();
+	alert (testCase);
+	var ipurl = "http://" + fitIP[selectEnvironment] + "/sendfpe/True/" + selectEnvironment + "/" + isselect + "/" + testCase;
+			alert (ipurl);
+	submitRequestToFITtool.onreadystatechange = function () {
+				if (submitRequestToFITtool.readyState === 4 && submitRequestToFITtool === 200) {
+						alert(submitRequestToFITtool.response);
+		document.getElementById("submitButton").style.color="red";
+				}
+		}
+		submitRequestToFITtool.open('get', ipurl , true);
+		submitRequestToFITtool.send();
+};
 
 //catch whatever errors I find
 .catch(function(error){
