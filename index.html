@@ -15,10 +15,34 @@
 
 <div class="body">
 
-    <p class="caption"><b>This is the landing page for the Release 10: Testing</b></p>
-    <hl1>Get the API Call from FIT Server</hl1>
+    <h1 class="caption"><b>This is the landing page for the Release 10: Testing</b></h1>
+  <!--  <hl1>Get the API Call from FIT Server</hl1>
        <p> <button type="button" id="getTestCase" onclick="loadResponse()">Get Data From FIT Tool</button></p>
-        <ul id="testcases"> </ul>
+
+        <ul id="testcases"> </ul>-->
+    <select name="environment" id="environment">
+        <option selected="selected">STG</option>
+        <option>PROD</option>
+        <option>DEMO</option>
+    </select>
+    <label for="inputscript">Select the Input Script to use</label>
+   <select name="inputscript" id="inputscript">
+       <option selected="selected">Script1</option>
+       <option>Script2</option>
+   </select>
+ <br><br>
+   <label for="test_Case_No">Select Voice Test Case ID</label>
+   <select name="test_Case_No" id="test_Case_No">
+       <option selected="selected">0001</option>
+       <option selected="selected">0002</option>
+       <option selected="selected">0003</option>
+       <option selected="selected">0004</option>
+       <option selected="selected">0005</option>
+   </select>
+   <br><br>
+   <span><b>Submit Request to Tivo Cloud</b></span>
+   <a class="ui-button ui-widget ui-corner-all" id="submitButton" href="#" onclick="submit()">Submit</a>
+ <script type="text/javascript">
 </div>
 
 </body>
